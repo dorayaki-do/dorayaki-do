@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: dorayaki_app
+    build:
+      context: .
+      dockerfile: build/app/Dockerfile
+      target: builder
+    command: ./start.sh
+    environment:
+      DB_INFO: '{ "password": "password", "dbname": "dorayaki", "engine": "mysql", "port": 3306, "host": "db", "username": "dorayaki" }'
+    volumes:
+      - ./pkg:/build/pkg
+    ports:
+      - 8080:8080
+
+  db:
+    container_name: dorayaki_db
+    image: mysql:5.7
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --general-log=true --general-log-file=/var/log/mysql/general.log
+    restart: always
+    environment:
+      MYSQL_DATABASE: dorayaki
+      MYSQL_USER: dorayaki 
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+  minio:
+    container_name: dorayaki_minio
+    image: minio/minio
+    command: ["server", "--compat", "/data"]
+    environment:
+      MINIO_ACCESS_KEY: minio_dev
+      MINIO_SECRET_KEY: minio_dev
+    ports:
+      - "9000:9000"
