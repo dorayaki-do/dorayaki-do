@@ -1,0 +1,7 @@
+openapi: 3.0.1
+info:
+  title: Dorayaki API
+  description: hackathon 202109
+  version: 0.0.1
+
+paths:
