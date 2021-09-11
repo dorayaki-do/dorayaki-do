@@ -10,7 +10,7 @@ make loc
 
 ## migration file生成
 ```sh
-make create-migration-file filename
+make create-migration-file name=${filename}
 ```
 
 ## migration
