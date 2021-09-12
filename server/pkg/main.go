@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/dorayaki-do/dorayaki-do/models"
 	"github.com/dorayaki-do/dorayaki-do/pkg/repository"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 
 	"github.com/kelseyhightower/envconfig"
 
@@ -32,6 +35,11 @@ func unmarshalDBInfo(s string) DataBaseInfo {
 	}
 
 	return db
+}
+
+func autoMigration(db *gorm.DB) {
+	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.Post{})
 }
 
 func main() {
