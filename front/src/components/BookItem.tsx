@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {
   Box,
   Center,
@@ -20,7 +21,11 @@ export const BookItem: React.FC<BookItemProps> = ({
   return (
     <Stack>
       <LinkBox>
-        <Box bg="tomato" width="150px" height="240px"></Box>
+        {imageUrl != "" ? (
+          <Image src={imageUrl} alt={title} width={150} height={240} />
+        ) : (
+          <Box bg="tomato" width="150px" height="240px"></Box>
+        )}
         <Center>
           <LinkOverlay href={"/read/" + bookId}>
             <Text textDecoration="none">{title}</Text>

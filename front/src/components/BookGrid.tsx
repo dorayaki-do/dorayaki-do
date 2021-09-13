@@ -3,7 +3,7 @@ import { BookItem } from "./BookItem"
 
 export const BookGrid = () => {
   const tmpBookContents = {
-    imageUrl: "",
+    imageUrl: "/entertainment_comic.png",
     title: "タイトルです",
     bookId: "alice",
   }
