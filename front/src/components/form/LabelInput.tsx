@@ -3,7 +3,8 @@ import { FormikHandlers } from "formik";
 import { ChangeEvent, memo, VFC } from "react";
 
 type Props = {
-  type: string
+  type?: string
+  name: string
   value: string
   onChange: {
     (e: React.ChangeEvent<any>): void;
@@ -13,13 +14,13 @@ type Props = {
 }
 
 export const LabelInput: VFC<Props> = memo((props) => {
-  const { type, value, onChange, children } = props;
+  const { type, name, value, onChange, children } = props;
   return (
     <FormControl isRequired my="4">
       <FormLabel fontSize="sm">{children}</FormLabel>
       <Input
-        type={type}
-        name={type}
+        type={type || "text"}
+        name={name}
         value={value}
         placeholder={`${children}を入れてください`}
         fontSize="xs"

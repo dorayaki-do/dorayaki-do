@@ -32,6 +32,7 @@ const SignIn: VFC = memo(() => {
               <Heading as="h1" fontSize="md">ログイン</Heading>
               <LabelInput
                 type="email"
+                name="email"
                 value={values.email}
                 onChange={handleChange}
               >
@@ -39,6 +40,7 @@ const SignIn: VFC = memo(() => {
               </LabelInput>
               <LabelInput
                 type="password"
+                name="password"
                 value={values.password}
                 onChange={handleChange}
               >
