@@ -13,7 +13,7 @@ services:
     volumes:
       - ./pkg:/build/pkg
     ports:
-      - 8080:8080
+      - "8080:8080"
 
   db:
     container_name: dorayaki_db
@@ -26,7 +26,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3306:3306
+      - "3306:3306"
 
   minio:
     container_name: dorayaki_minio
