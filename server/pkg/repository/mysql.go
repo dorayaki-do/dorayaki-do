@@ -2,8 +2,9 @@ package repository
 
 import (
 	"fmt"
-	"golang.org/x/crypto/bcrypt"
 	"time"
+
+	"golang.org/x/crypto/bcrypt"
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/models"
 	"github.com/jinzhu/gorm"
@@ -56,7 +57,7 @@ func NewDBClient(user, password, host string, port int, dbName string) *gorm.DB 
 	}
 
 	autoMigration(DB)
-	// Seed(DB)
+	Seed(DB)
 
 	return DB
 }
