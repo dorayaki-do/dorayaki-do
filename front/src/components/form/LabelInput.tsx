@@ -1,6 +1,5 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { FormikHandlers } from "formik";
-import { ChangeEvent, memo, VFC } from "react";
+import { memo, VFC } from "react";
 
 type Props = {
   type?: string

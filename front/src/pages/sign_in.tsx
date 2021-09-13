@@ -2,10 +2,7 @@ import { memo, VFC } from "react"
 import {
   Box,
   Center,
-  FormControl,
-  FormLabel,
   Heading,
-  Input,
   Text
 } from "@chakra-ui/react"
 import { Form, Formik } from "formik"
