@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { ReactReader } from "react-reader"
 
-const App = () => {
+const Reader = () => {
   // And your own state logic to persist state
   const [location, setLocation] = useState(null)
   const locationChanged = (epubcifi) => {
@@ -19,4 +19,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Reader
