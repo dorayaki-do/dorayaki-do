@@ -12,7 +12,7 @@ export const BookShelf = () => {
           <Center>
             <Input width="80%" placeholder="本や作者を検索" />
           </Center>
-          <BookGrid></BookGrid>
+          <BookGrid />
         </Stack>
       </Center>
     </Box>

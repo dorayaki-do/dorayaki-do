@@ -18,122 +18,122 @@ export const BookGrid = () => {
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
       <BookItem
         bookId={tmpBookContents.bookId}
         title={tmpBookContents.title}
         imageUrl={tmpBookContents.imageUrl}
-      ></BookItem>
+      />
     </Grid>
   )
 }
