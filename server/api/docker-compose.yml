@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  swagger-server:
+    image: stoplight/prism:3
+    ports:
+      - "4010:4010"
+    command: mock -h 0.0.0.0 /dorayaki.yaml
+    volumes:
+      - ./settings.yaml:/settings.yaml
