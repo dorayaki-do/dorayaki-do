@@ -6,7 +6,7 @@ import (
 	"github.com/dorayaki-do/dorayaki-do/pkg/repository"
 )
 
-func Get(user api.User) ([]models.User, error) {
+func GetUser(user api.User) ([]models.User, error) {
 	db := repository.GetDB()
 
 	var u []models.User
@@ -17,7 +17,7 @@ func Get(user api.User) ([]models.User, error) {
 	return u, nil
 }
 
-func Create(user api.User) error {
+func CreateUser(user api.UserPasswordHashed) error {
 	db := repository.GetDB()
 
 	err := db.Create(&models.User{Email: user.Email, Password: user.Password, Nickname: user.Nickname}).Error

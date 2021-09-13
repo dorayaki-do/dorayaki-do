@@ -2,6 +2,7 @@ package repository
 
 import (
 	"fmt"
+	"golang.org/x/crypto/bcrypt"
 	"time"
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/models"
@@ -21,9 +22,10 @@ func autoMigration(db *gorm.DB) {
 }
 
 func Seed(db *gorm.DB) {
+	password, _ := bcrypt.GenerateFromPassword([]byte("password"), 2048)
 	user := models.User{
 		Email:    "test@example.com",
-		Password: "password",
+		Password: password,
 		Nickname: "aoki",
 	}
 
@@ -54,7 +56,7 @@ func NewDBClient(user, password, host string, port int, dbName string) *gorm.DB 
 	}
 
 	autoMigration(DB)
-	Seed(DB)
+	// Seed(DB)
 
 	return DB
 }
