@@ -1,6 +1,12 @@
-import { Box, Grid } from "@chakra-ui/react"
+import { Grid } from "@chakra-ui/react"
+import { BookItem } from "./BookItem"
 
 export const BookGrid = () => {
+  const tmpBookContents = {
+    imageUrl: "",
+    title: "タイトルです",
+    bookId: "alice",
+  }
   return (
     <Grid
       templateColumns="repeat(auto-fill, 150px)"
@@ -8,30 +14,126 @@ export const BookGrid = () => {
       gap={6}
       mx="auto"
     >
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
-      <Box bg="tomato" width="150px" height="240px"></Box>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
+      <BookItem
+        bookId={tmpBookContents.bookId}
+        title={tmpBookContents.title}
+        imageUrl={tmpBookContents.imageUrl}
+      ></BookItem>
     </Grid>
   )
 }
