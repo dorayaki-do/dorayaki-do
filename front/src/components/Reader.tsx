@@ -1,7 +1,11 @@
 import React, { useState } from "react"
 import { ReactReader } from "react-reader"
 
-const Reader = () => {
+type ReaderProps = {
+  id: string
+}
+
+const Reader: React.FC<ReaderProps> = ({ id }) => {
   // And your own state logic to persist state
   const [location, setLocation] = useState(null)
   const locationChanged = (epubcifi) => {
@@ -13,7 +17,7 @@ const Reader = () => {
       <ReactReader
         location={location}
         locationChanged={locationChanged}
-        url="http://localhost:8080/techdo-book-3.epub"
+        url={"/" + id + ".epub"}
       />
     </div>
   )
