@@ -1,7 +1,9 @@
 package server
 
 import (
+	"github.com/gin-gonic/contrib/cors"
 	"net/http"
+	"time"
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/route"
 	"github.com/gin-gonic/contrib/sessions"
@@ -17,6 +19,15 @@ func Init() {
 	r := gin.New()
 
 	store := sessions.NewCookieStore([]byte("secret"))
+	corsConfig := cors.Config{
+		AllowAllOrigins:  true,
+		AllowedMethods:   []string{"GET", "POST", "DELETE", "PATCH", "PUT"},
+		AllowedHeaders:   []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+		AllowCredentials: false,
+		MaxAge:           12 * time.Hour,
+	}
+
+	r.Use(cors.New(corsConfig))
 	r.Use(sessions.Sessions("user", store))
 
 	router := r.Group("")
