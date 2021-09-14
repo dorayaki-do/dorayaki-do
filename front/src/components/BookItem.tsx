@@ -1,9 +1,9 @@
-import Image from "next/image"
 import {
   Box,
   Center,
   LinkBox,
   LinkOverlay,
+  Image,
   Stack,
   Text,
 } from "@chakra-ui/react"

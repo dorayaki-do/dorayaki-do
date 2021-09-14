@@ -30,9 +30,7 @@ export const BookGrid = () => {
             <BookItem
               bookId={data.id}
               title={data.title}
-              // unhandled runtime errorのため一旦コメントアウト
-              // imageUrl={data.epub_url}
-              imageUrl={"/entertainment_comic.png"}
+              imageUrl={data.epub_url}
             />
           ))}
         </>
