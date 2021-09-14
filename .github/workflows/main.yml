@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 300
-    if: "contains(join(github.event.pull_request.labels.*.name), 'Backend'"
+    if: "contains(join(github.event.pull_request.labels.*.name), 'Backend')"
 
     steps:
     - uses: actions/checkout@v1
