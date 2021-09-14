@@ -31,8 +31,8 @@ func Seed(db *gorm.DB) {
 		Author:       "テストユーザー1",
 		Epuburl:      "test1",
 		Thumbnailurl: "test1",
-		Latitude: "35.69112748139285",
-		Longitude: "139.75755883982063",
+		Latitude:     "35.69112748139285",
+		Longitude:    "139.75755883982063",
 	}
 
 	book2 := models.Book{
