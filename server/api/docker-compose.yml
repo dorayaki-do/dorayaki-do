@@ -6,4 +6,4 @@ services:
       - "4010:4010"
     command: mock -h 0.0.0.0 /dorayaki.yaml
     volumes:
-      - ./settings.yaml:/settings.yaml
+      - ./dorayaki.yaml:/dorayaki.yaml
