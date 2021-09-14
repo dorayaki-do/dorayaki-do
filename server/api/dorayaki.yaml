@@ -96,7 +96,7 @@ paths:
             schema:
               properties:
                 book_id:
-                  $ref: '#/components/schemas/book_id'
+                  $ref: '#/components/schemas/BookId'
       responses:
         201:
           description: Created
@@ -112,7 +112,7 @@ paths:
       tags:
         - books
       parameters:
-        - $ref: '#/components/parameters/BookId'
+        - $ref: '#/components/parameters/BookIdParameter'
       responses:
         200:
           description: OK
@@ -128,7 +128,7 @@ paths:
       tags:
         - books
       parameters:
-        - $ref: '#/components/parameters/BookId'
+        - $ref: '#/components/parameters/BookIdParameter'
       responses:
         200:
           description: OK
