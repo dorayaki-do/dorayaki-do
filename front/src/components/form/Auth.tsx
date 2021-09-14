@@ -6,11 +6,11 @@ import {
   Text
 } from "@chakra-ui/react"
 import { Form, Formik } from "formik"
-import axios from "axios"
 
 import { LabelInput } from "./LabelInput";
 import { BasicButton } from "../BasicButton";
-import { API_ENDPOINT } from "../../utils/apiEndPoint";
+import { useRouter } from "next/router";
+import { useAuth } from "../../hooks/useAuth"
 
 type Props = {
   title: string
@@ -19,28 +19,16 @@ type Props = {
 export const Auth: VFC<Props> = memo((props) => {
   const { title } = props;
   const [error, setError] = useState("")
-
-  const signUp = (values) => {
-    const data = {email: values.email, password: values.password, nickname: values.name}
-
-    axios.post(`${API_ENDPOINT}/signup`, {...data})
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err.message))
-  }
-
-  const signIn = (values) => {
-    const data = {password: values.password, nickname: values.name}
-
-    axios.post(`${API_ENDPOINT}/login`, {...data})
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err.message))
-  }
+  const path = useRouter()
+  const pathname = path.pathname
+  const { auth } = useAuth()
 
   const passwordConValidation = (values) => {
     if (values.password !== values.passwordConf) {
       setError("パスワードとパスワード（確認用）が異なります")
     } else {
-      signUp(values)
+      const data = {email: values.email, password: values.password, nickname: values.name}
+      auth({data, path: pathname})
     }
   }
 
@@ -51,7 +39,8 @@ export const Auth: VFC<Props> = memo((props) => {
         if (title === "新規登録") {
           passwordConValidation(values)
         } else {
-          signIn(values)
+          const data = {nickname: values.name, password: values.password}
+          auth({data, path: pathname})
         }
         console.log(values)
       }}
