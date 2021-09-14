@@ -55,23 +55,23 @@ export const Auth: VFC<Props> = memo((props) => {
             <Center align="center" h="100vh">
               <Box w="335px">
                 <Heading as="h1" fontSize="md">{title}</Heading>
-                {title === "新規登録" && (
-                  <LabelInput
-                    name="name"
-                    value={values.name}
-                    onChange={handleChange}
-                  >
-                    ニックネーム
-                  </LabelInput>
-                )}
                 <LabelInput
-                  type="email"
-                  name="email"
-                  value={values.email}
+                  name="name"
+                  value={values.name}
                   onChange={handleChange}
                 >
-                  メールアドレス
+                  ニックネーム
                 </LabelInput>
+                {title === "新規登録" && (
+                  <LabelInput
+                    type="email"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                  >
+                    メールアドレス
+                  </LabelInput>
+                )}
                 <LabelInput
                   type="password"
                   name="password"
