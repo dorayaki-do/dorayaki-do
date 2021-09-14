@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Marker, InfoWindow } from "@react-google-maps/api"
+import { MapInfo } from "./MapInfo"
 
 type Place = { info: string; location: { lat: number; lng: number } }
 
@@ -43,7 +44,7 @@ export function PlaceInfo() {
             setSelected(null)
           }}
         >
-          <div>{selected.info}</div>
+          <MapInfo eventName={selected.info} />
         </InfoWindow>
       )}
     </>

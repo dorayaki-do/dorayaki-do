@@ -1,5 +1,5 @@
 import React from "react"
-import { GoogleMapComponent } from "../../components/Map"
+import { GoogleMapComponent } from "../../components/map/Map"
 
 const App = () => {
   return <GoogleMapComponent />
