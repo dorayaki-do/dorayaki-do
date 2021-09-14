@@ -10,9 +10,9 @@ func SetUpAuthRouter(r *gin.RouterGroup) {
 	{
 		rLogout.POST("", controllers.Logout)
 	}
-	rGetBook := r.Group("/user")
+	rGetBook := r.Group("/users/me")
 	{
-		rGetBook.GET("/me/books", controllers.GetMyBooks)
+		rGetBook.GET("/books", controllers.GetMyBooks)
 	}
 }
 
