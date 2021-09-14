@@ -10,6 +10,11 @@ func SetUpAuthRouter(r *gin.RouterGroup) {
 	{
 		rLogout.POST("", controllers.Logout)
 	}
+	rUser := r.Group("/users/me")
+	{
+		rUser.GET("/books", controllers.GetMyBooks)
+		rUser.GET("/books/:id/epub", controllers.GetEpubUrl)
+	}
 }
 
 func SetUpRouter(r *gin.RouterGroup) {

@@ -23,23 +23,40 @@ func autoMigration(db *gorm.DB) {
 }
 
 func Seed(db *gorm.DB) {
-	password, _ := bcrypt.GenerateFromPassword([]byte("password"), 2048)
-	user := models.User{
-		Email:    "test@example.com",
-		Password: password,
-		Nickname: "aoki",
-	}
+	password, _ := bcrypt.GenerateFromPassword([]byte("password"), 0)
 
-	book := models.Book{
+	book1 := models.Book{
 		Title:        "テスト1",
 		Author:       "テストユーザー1",
 		Eventname:    "テストイベント1",
-		Epuburl:      "test",
-		Thumbnailurl: "test",
+		Epuburl:      "test1",
+		Thumbnailurl: "test1",
 	}
 
-	db.Create(&user)
-	db.Create(&book)
+	book2 := models.Book{
+		Title:        "テスト2",
+		Author:       "テストユーザー2",
+		Eventname:    "テストイベント2",
+		Epuburl:      "test2",
+		Thumbnailurl: "test2",
+	}
+
+	user1 := models.User{
+		Email:    "test1@example.com",
+		Password: password,
+		Nickname: "aoki",
+		Books:    []models.Book{book1},
+	}
+
+	user2 := models.User{
+		Email:    "test2@example.com",
+		Password: password,
+		Nickname: "hanako",
+		Books:    []models.Book{book1, book2},
+	}
+
+	db.Create(&user1)
+	db.Create(&user2)
 }
 
 func NewDBClient(user, password, host string, port int, dbName string) *gorm.DB {

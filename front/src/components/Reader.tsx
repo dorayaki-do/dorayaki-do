@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 
 type ReaderProps = {
@@ -13,13 +14,13 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
     setLocation(epubcifi)
   }
   return (
-    <div style={{ height: "100vh" }}>
+    <Box h="95vh" position="relative">
       <ReactReader
         location={location}
         locationChanged={locationChanged}
         url={"/" + id + ".epub"}
       />
-    </div>
+    </Box>
   )
 }
 
