@@ -1,12 +1,22 @@
-import { Grid } from "@chakra-ui/react"
+import { Grid, Text } from "@chakra-ui/react"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { API_ENDPOINT } from "../utils/apiEndPoint"
 import { BookItem } from "./BookItem"
 
 export const BookGrid = () => {
-  const tmpBookContents = {
-    imageUrl: "/entertainment_comic.png",
-    title: "タイトルです",
-    bookId: "alice",
-  }
+  const [bookData, setBookData] = useState([])
+
+  useEffect(() => {
+    axios.get(`${API_ENDPOINT}/books`)
+    .then((res) => {
+      setBookData(res.data.books)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }, [])
+
   return (
     <Grid
       templateColumns="repeat(auto-fill, 150px)"
@@ -14,126 +24,22 @@ export const BookGrid = () => {
       gap={6}
       mx="auto"
     >
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
-      <BookItem
-        bookId={tmpBookContents.bookId}
-        title={tmpBookContents.title}
-        imageUrl={tmpBookContents.imageUrl}
-      />
+      {bookData.length ? (
+        <>
+          {bookData.map((data) => (
+            <BookItem
+              bookId={data.id}
+              title={data.title}
+              // unhandled runtime errorのため一旦コメントアウト
+              // imageUrl={data.epub_url}
+              imageUrl={"/entertainment_comic.png"}
+            />
+          ))}
+        </>
+      ) : (
+        <Text>本棚に本がありません</Text>
+      )
+      }
     </Grid>
   )
 }
