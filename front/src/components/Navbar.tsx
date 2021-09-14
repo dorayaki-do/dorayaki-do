@@ -1,16 +1,9 @@
 import React from "react"
 import {
   Box,
-  Button,
-  Center,
   Text,
   Link,
   useDisclosure,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerOverlay,
   Flex,
   IconButton,
   Spacer,
@@ -27,9 +20,11 @@ export const Navbar = () => {
   return (
     <>
       <Flex bgColor="#ffa000" minH="5vh" alignItems="center" px="15%">
-        <Text color="white" fontWeight="bold" fontSize="lg">
-          DorayakiDo
-        </Text>
+        <Link href="/" _hover={{ "text-decoration": "none" }}>
+          <Text color="white" fontWeight="bold" fontSize="lg">
+            DorayakiDo
+          </Text>
+        </Link>
         <Spacer />
         <IconButton
           aria-label="Menu"
