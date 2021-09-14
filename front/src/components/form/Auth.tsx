@@ -22,13 +22,14 @@ export const Auth: VFC<Props> = memo((props) => {
   const path = useRouter()
   const pathname = path.pathname
   const { auth } = useAuth()
+  const router = useRouter()
 
   const passwordConValidation = (values) => {
     if (values.password !== values.passwordConf) {
       setError("パスワードとパスワード（確認用）が異なります")
     } else {
       const data = {email: values.email, password: values.password, nickname: values.name}
-      auth({data, path: pathname})
+      auth({data, path: pathname, router})
     }
   }
 
@@ -40,7 +41,7 @@ export const Auth: VFC<Props> = memo((props) => {
           passwordConValidation(values)
         } else {
           const data = {nickname: values.name, password: values.password}
-          auth({data, path: pathname})
+          auth({data, path: pathname, router})
         }
         console.log(values)
       }}
