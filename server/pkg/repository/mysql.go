@@ -23,7 +23,7 @@ func autoMigration(db *gorm.DB) {
 }
 
 func Seed(db *gorm.DB) {
-	password, _ := bcrypt.GenerateFromPassword([]byte("password"), 2048)
+	password, _ := bcrypt.GenerateFromPassword([]byte("password"), 0)
 
 	book1 := models.Book{
 		Title:        "テスト1",

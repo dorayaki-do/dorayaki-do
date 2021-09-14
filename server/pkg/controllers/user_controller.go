@@ -112,8 +112,10 @@ func Logout(c *gin.Context) {
 }
 
 // ユーザーが持っている本を全て返すAPI
+// セッションがうまく動作していない...
 func GetMyBooks(c *gin.Context) {
 	session := sessions.Default(c)
+	session.Set("UserID", 3)
 	uid := session.Get("UserID")
 	if uid == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
