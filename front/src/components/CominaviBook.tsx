@@ -12,9 +12,9 @@ export const PurchaseBook: VFC<Props> = memo((props) => {
     <BookConfirmation
       bookId={id}
       url={imageUrl}
-      confMessage="この本を購入しますか？"
-      yesButton="購入する"
-      noButton="購入しない"
+      confMessage="この作者の他の作品を見ますか？"
+      yesButton="コミなびで見る"
+      noButton="本棚に戻る"
     />
   )
 })

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { memo, VFC } from "react";
-import { PurchaseBook } from "../../components/PurchaseBook";
+import { PurchaseBook } from "../../components/CominaviBook";
 import { getAsStringFromArray } from "../../utils/getAsStringFromArray";
 
 const App: VFC = memo(() => {
