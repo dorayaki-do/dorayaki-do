@@ -83,6 +83,7 @@ func GetBookByEvent(c *gin.Context) {
 		if err == nil {
 			if book.Title == "" {
 				text := &api.ResponseBook{
+					ID:           content.ID,
 					Title:        content.Title,
 					Thumbnailurl: content.Thumbnailurl,
 					CanAccess:    false,
