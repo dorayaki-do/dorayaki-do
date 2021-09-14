@@ -118,7 +118,17 @@ func GetUserBook(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 	}
 
-	response := user.Books
+	books := user.Books
+	var res []api.UserHaveBook
 
-	c.JSON(http.StatusOK, response)
+	for _, content := range books {
+		text := &api.UserHaveBook{
+			Title:        content.Title,
+			Eventname:    content.Eventname,
+			Thumbnailurl: content.Thumbnailurl,
+		}
+		res = append(res, *text)
+	}
+
+	c.JSON(http.StatusOK, res)
 }
