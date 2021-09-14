@@ -9,7 +9,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react"
 import Image from "next/image"
-import React, { memo, VFC } from "react"
+import React from "react"
 import { BasicButton } from "./BasicButton"
 import { PurchaseBook } from "./CominaviBook"
 
@@ -17,14 +17,14 @@ type Props = {
   id: string
 }
 
-export const BuyFooter: VFC<Props> = memo((props) => {
+export const BuyFooter: React.FC<Props> = ({ id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { id } = props
+
   const onClick = () => {
     onOpen()
-    console.log("ok")
   }
 
+  // 本当はidとかからとってきたい
   const imageUrl = "/entertainment_comic.png"
   const cominabiUrl =
     "https://mechacomi.jp/titles/832389/volumes/fd2612f1-e214-4a24-b6f9-3392d99ecdde"
@@ -85,4 +85,4 @@ export const BuyFooter: VFC<Props> = memo((props) => {
       </Modal>
     </>
   )
-})
+}
