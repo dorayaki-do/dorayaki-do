@@ -1,9 +1,9 @@
-import Image from "next/image"
 import {
   Box,
   Center,
   LinkBox,
   LinkOverlay,
+  Image,
   Stack,
   Text,
 } from "@chakra-ui/react"
@@ -27,7 +27,7 @@ export const BookItem: React.FC<BookItemProps> = ({
           <Box bg="tomato" width="150px" height="240px"></Box>
         )}
         <Center>
-          <LinkOverlay href={"/read/" + bookId}>
+          <LinkOverlay href={`/read/${bookId}`}>
             <Text textDecoration="none">{title}</Text>
           </LinkOverlay>
         </Center>
