@@ -8,7 +8,7 @@ const libraries: Libraries = ["places"]
 
 // 地図の大きさ
 const mapContainerStyle = {
-  height: "100vh",
+  height: "95vh",
   width: "100vw",
 }
 

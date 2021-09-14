@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 import axios from "axios"
 
@@ -28,13 +29,13 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
   }, [])
 
   return (
-    <div style={{ height: "100vh" }}>
+    <Box h="95vh" position="relative">
       <ReactReader
         location={location}
         locationChanged={locationChanged}
         url={epubUrl}
       />
-    </div>
+    </Box>
   )
 }
 
