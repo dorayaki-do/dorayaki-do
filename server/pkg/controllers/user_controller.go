@@ -10,6 +10,7 @@ import (
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/forms/api"
 	"github.com/dorayaki-do/dorayaki-do/pkg/models"
+	mymodels "github.com/dorayaki-do/dorayaki-do/pkg/models/repository"
 	repo "github.com/dorayaki-do/dorayaki-do/pkg/models/repository"
 	"github.com/gin-gonic/gin"
 )
@@ -142,9 +143,11 @@ func GetMyBooks(c *gin.Context) {
 
 func GetEvents(c *gin.Context) {
 	session := sessions.Default(c)
-	session.Set("UserID", 1)
-	uid := session.Get("UserID")
-	if uid == nil {
+	nickname := session.Get("user")
+
+	uid, err := mymodels.GetUserIDByNickname(nickname)
+
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
 		return
 	}
