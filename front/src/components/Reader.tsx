@@ -36,6 +36,7 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
           location={location}
           locationChanged={locationChanged}
           url={epubUrl}
+          swipeable
         />
       </Box>
       <BuyFooter id={id} />
