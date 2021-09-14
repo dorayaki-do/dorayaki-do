@@ -6,7 +6,6 @@ import { getAsStringFromArray } from "../../utils/getAsStringFromArray";
 const App: VFC = memo(() => {
   const router = useRouter()
   const id = getAsStringFromArray(router.query.id)
-  console.log(id)
 
   return <AddBook id={id} />
 })
