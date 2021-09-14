@@ -29,7 +29,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPO_NAME }}
       run: |
-        IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs_tags_##g")
+        IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
         cd server/
         docker build -f build/app/Dockerfile .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
