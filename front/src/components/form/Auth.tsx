@@ -11,6 +11,7 @@ import { LabelInput } from "./LabelInput";
 import { BasicButton } from "../BasicButton";
 import { useRouter } from "next/router";
 import { useAuth } from "../../hooks/useAuth"
+import { useMessage } from "../../hooks/useMessage";
 
 type Props = {
   title: string
@@ -23,13 +24,14 @@ export const Auth: VFC<Props> = memo((props) => {
   const pathname = path.pathname
   const { auth } = useAuth()
   const router = useRouter()
+  const { showMessage } = useMessage()
 
   const passwordConValidation = (values) => {
     if (values.password !== values.passwordConf) {
       setError("パスワードとパスワード（確認用）が異なります")
     } else {
       const data = {email: values.email, password: values.password, nickname: values.name}
-      auth({data, path: pathname, router})
+      auth({data, path: pathname, router, showMessage})
     }
   }
 
@@ -41,7 +43,7 @@ export const Auth: VFC<Props> = memo((props) => {
           passwordConValidation(values)
         } else {
           const data = {nickname: values.name, password: values.password}
-          auth({data, path: pathname, router})
+          auth({data, path: pathname, router, showMessage})
         }
         console.log(values)
       }}

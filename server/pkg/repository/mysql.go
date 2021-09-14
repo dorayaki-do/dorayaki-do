@@ -28,7 +28,6 @@ func Seed(db *gorm.DB) {
 	book1 := models.Book{
 		Title:        "テスト1",
 		Author:       "テストユーザー1",
-		Eventname:    "テストイベント1",
 		Epuburl:      "test1",
 		Thumbnailurl: "test1",
 	}
@@ -36,7 +35,6 @@ func Seed(db *gorm.DB) {
 	book2 := models.Book{
 		Title:        "テスト2",
 		Author:       "テストユーザー2",
-		Eventname:    "テストイベント2",
 		Epuburl:      "test2",
 		Thumbnailurl: "test2",
 	}

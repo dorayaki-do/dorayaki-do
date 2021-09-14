@@ -133,7 +133,6 @@ func GetMyBooks(c *gin.Context) {
 	for _, content := range books {
 		text := &api.UserHaveBook{
 			Title:        content.Title,
-			Eventname:    content.Eventname,
 			Thumbnailurl: content.Thumbnailurl,
 		}
 		res = append(res, *text)
