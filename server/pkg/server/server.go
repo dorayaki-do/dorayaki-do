@@ -1,10 +1,11 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/dorayaki-do/dorayaki-do/pkg/route"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 const (
@@ -30,6 +31,7 @@ func Init() {
 func AuthRequired(c *gin.Context) {
 	session := sessions.Default(c)
 	user := session.Get(userKey)
+	session.Set("user", "aoki")
 	if user == nil {
 		// Abort the request with the appropriate error code
 		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
