@@ -1,11 +1,12 @@
 package controllers
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/dorayaki-do/dorayaki-do/pkg/repository"
 	"github.com/gin-gonic/contrib/sessions"
 	"golang.org/x/crypto/bcrypt"
-	"log"
-	"net/http"
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/forms/api"
 	"github.com/dorayaki-do/dorayaki-do/pkg/models"
@@ -47,6 +48,7 @@ func SignUp(c *gin.Context) {
 	}
 
 	session.Set(userKey, request.Nickname) // In real world usage you'd set this to the users ID
+	session.Set("UserID", request.ID)
 	if err := session.Save(); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save session"})
 		return
@@ -85,6 +87,7 @@ func Login(c *gin.Context) {
 
 	// Save the username in the session
 	session.Set(userKey, request.Nickname) // In real world usage you'd set this to the users ID
+	session.Set("UserID", request.ID)
 	if err := session.Save(); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save session"})
 		return
@@ -106,4 +109,35 @@ func Logout(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Successfully logged out"})
+}
+
+// ユーザーが持っている本を全て返すAPI
+// セッションがうまく動作していない...
+func GetMyBooks(c *gin.Context) {
+	session := sessions.Default(c)
+	session.Set("UserID", 1)
+	uid := session.Get("UserID")
+	if uid == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
+		return
+	}
+
+	user, err := repo.GetBooksByID(uid)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+	}
+
+	books := user.Books
+	var res []api.UserHaveBook
+
+	for _, content := range books {
+		text := &api.UserHaveBook{
+			Title:        content.Title,
+			Eventname:    content.Eventname,
+			Thumbnailurl: content.Thumbnailurl,
+		}
+		res = append(res, *text)
+	}
+
+	c.JSON(http.StatusOK, res)
 }
