@@ -23,7 +23,7 @@ func GetUserIDByNickname(nickname interface{}) (uint, error) {
 	user.Nickname = nickname.(string)
 
 	if err := repository.DB.Table("users").First(&user).Error; err != nil {
-		return user.ID, nil
+		return user.ID, err
 	}
 	return user.ID, nil
 }
