@@ -1,7 +1,6 @@
 import { memo, ReactNode, VFC } from "react"
 import { Box, Flex, Text } from "@chakra-ui/react"
-
-import { BasicButton } from "./BasicButton"
+import { BasicButton } from "../BasicButton"
 
 type Props = {
   bookId: string
