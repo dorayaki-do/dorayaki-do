@@ -8,8 +8,8 @@ services:
       dockerfile: build/app/Dockerfile
       target: builder
     command: ./start.sh
-    environment:
-      DB_INFO: '{ "password": "password", "dbname": "dorayaki", "engine": "mysql", "port": 3306, "host": "db", "username": "dorayaki" }'
+    env_file:
+      - .env
     volumes:
       - ./pkg:/build/pkg
     ports:
