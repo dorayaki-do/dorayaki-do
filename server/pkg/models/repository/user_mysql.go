@@ -24,3 +24,14 @@ func CreateUser(user api.UserPasswordHashed) error {
 
 	return err
 }
+
+func GetBooksByID(id string) (models.User, error) {
+	var user models.User
+
+	err := repository.DB.First(&user, id).Related(&user.Books, "Books").Error
+	if err != nil {
+		return user, err
+	}
+
+	return user, nil
+}

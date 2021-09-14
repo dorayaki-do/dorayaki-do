@@ -1,11 +1,12 @@
 package controllers
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/dorayaki-do/dorayaki-do/pkg/repository"
 	"github.com/gin-gonic/contrib/sessions"
 	"golang.org/x/crypto/bcrypt"
-	"log"
-	"net/http"
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/forms/api"
 	"github.com/dorayaki-do/dorayaki-do/pkg/models"
@@ -106,4 +107,18 @@ func Logout(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Successfully logged out"})
+}
+
+// ユーザーが持っている本を全て返すAPI
+func GetUserBook(c *gin.Context) {
+	uid := c.Param("id")
+
+	user, err := repo.GetBooksByID(uid)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+	}
+
+	response := user.Books
+
+	c.JSON(http.StatusOK, response)
 }

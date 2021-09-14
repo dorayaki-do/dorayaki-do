@@ -21,4 +21,8 @@ func SetUpRouter(r *gin.RouterGroup) {
 	{
 		rLogin.POST("", controllers.Login)
 	}
+	rGetBook := r.Group("/user")
+	{
+		rGetBook.GET("/:id/books", controllers.GetUserBook)
+	}
 }
