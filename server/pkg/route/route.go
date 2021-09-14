@@ -23,6 +23,6 @@ func SetUpRouter(r *gin.RouterGroup) {
 	}
 	rBook := r.Group("/book")
 	{
-		rBook.GET("/:id", controllers.Show)
+		rBook.GET("/:id", controllers.GetBook)
 	}
 }

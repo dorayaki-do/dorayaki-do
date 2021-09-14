@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Show(c *gin.Context) {
+func GetBook(c *gin.Context) {
 	id := c.Param("id")
 	book, err := models.GetBookByID(id)
 	if err != nil {
