@@ -18,6 +18,7 @@ func GetDB() *gorm.DB {
 }
 
 func autoMigration(db *gorm.DB) {
+	db.AutoMigrate(&models.Event{})
 	db.AutoMigrate(&models.User{})
 	db.AutoMigrate(&models.Book{})
 }
@@ -30,6 +31,7 @@ func Seed(db *gorm.DB) {
 		Author:       "テストユーザー1",
 		Epuburl:      "test1",
 		Thumbnailurl: "test1",
+		EventID:      1,
 	}
 
 	book2 := models.Book{
@@ -37,6 +39,14 @@ func Seed(db *gorm.DB) {
 		Author:       "テストユーザー2",
 		Epuburl:      "test2",
 		Thumbnailurl: "test2",
+		EventID:      1,
+	}
+
+	event := models.Event{
+		Title:     "祭り",
+		Latitude:  "20",
+		Longitude: "20",
+		Book:      []models.Book{book1, book2},
 	}
 
 	user1 := models.User{
@@ -53,6 +63,7 @@ func Seed(db *gorm.DB) {
 		Books:    []models.Book{book1, book2},
 	}
 
+	db.Create(&event)
 	db.Create(&user1)
 	db.Create(&user2)
 }

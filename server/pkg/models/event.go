@@ -15,5 +15,5 @@ type Event struct {
 	Longitude   string     `json:"longitude"`
 	StartAt     *time.Time `json:"start_at"`
 	EndAt       *time.Time `json:"end_at"`
-	Book        []Book
+	Book        []Book     `json:"book" gorm:"foreignkey:EventID"`
 }

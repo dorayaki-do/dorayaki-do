@@ -9,4 +9,5 @@ type Book struct {
 type ResponseBook struct {
 	Title        string
 	Thumbnailurl string
+	CanAccess    bool
 }
