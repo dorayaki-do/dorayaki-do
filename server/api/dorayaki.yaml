@@ -3,5 +3,280 @@ info:
   title: Dorayaki API
   description: hackathon 202109
   version: 0.0.1
+servers:
+  - url: http://{host}:{port}/api/v1
+    description: 開発用
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '8080'
 
 paths:
+  /login:
+    post:
+      operationId: PostLogin
+      summary: Login
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                password:
+                  $ref: '#/components/schemas/Password'
+                nickname:
+                  $ref: '#/components/schemas/Nickname'
+      responses:
+        204:
+          description: No Content
+
+  /signup:
+    post:
+      operationId: PostSignup
+      summary: Signup
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  $ref: '#/components/schemas/Email'
+                password:
+                  $ref: '#/components/schemas/Password'
+                nickname:
+                  $ref: '#/components/schemas/Nickname'
+      responses:
+        204:
+          description: No Content
+
+  /users/me:
+    get:
+      operationId: GetUser
+      summary: 自分のユーザ情報を取得
+      tags:
+        - users
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /books:
+    get:
+      operationId: GetMyBooks
+      summary: コレクションした本の取得
+      tags:
+        - books
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  books:
+                    $ref: '#/components/schemas/Books'
+    post:
+      operationId: PostBook
+      summary: 本棚へ本の追加
+      tags:
+        - books
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                book_id:
+                  $ref: '#/components/schemas/book_id'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+
+  /books/{book_id}:
+    get:
+      operationId: GetBook
+      summary: 本の取得
+      tags:
+        - books
+      parameters:
+        - $ref: '#/components/parameters/BookId'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+
+  /books/{book_id}/epub:
+    get:
+      operationId: GetEpubUrl
+      summary: EpubのURIを取得
+      tags:
+        - books
+      parameters:
+        - $ref: '#/components/parameters/BookId'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  epub_url:
+                    $ref: '#/components/schemas/EpubUrl'
+
+
+components:
+  schemas:
+    Nickname:
+      type: string
+      description: ユーザの表示名
+    Email:
+      type: string
+      description: ユーザのEmailアドレス
+    Password:
+      type: string
+      description: ユーザのパスワード
+    UserId:
+      type: integer
+      description: User ID
+
+    Datetime:
+      type: string
+      description: 作成日
+      format: datetime
+
+    User:
+      description: ユーザ
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UserId'
+        nickname:
+          $ref: '#/components/schemas/Nickname'
+      example:
+        - id: 1
+          nickname: "hoge"
+
+    Users:
+      description: ユーザ
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+      example:
+        - id: 1
+          nickname: "hoge"
+        - id: 2
+          nickname: "fuga"
+        - id: 3
+          nickname: "piyo"
+
+    BookId:
+      type: integer
+    Title:
+      type: string
+    Author:
+      type: string
+    EventName:
+      type: string
+      description: イベントの名前
+    EpubUrl:
+      type: string
+      format: uri
+      description: EpubのURI
+    ThumbnailUrl:
+      type: string
+      format: uri
+      description: サムネイル画像のURI
+    Latitude:
+      type: string
+      description: 店舗の緯度
+    Longitude:
+      type: string
+      description: 店舗の経度
+    ShopName:
+      type: string
+
+    Book:
+      description: 本
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/BookId'
+        title:
+          $ref: '#/components/schemas/Title'
+        author:
+          $ref: '#/components/schemas/Author'
+        event_name:
+          $ref: '#/components/schemas/EventName'
+        thumbnail_url:
+          $ref: '#/components/schemas/ThumbnailUrl'
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        shop_name:
+          $ref: '#/components/schemas/ShopName'
+      example:
+        - id: 1
+          title: "hoge"
+          author: "hoge"
+          event_name: "hoge"
+          thumbnail_url: "https://www.example.com"
+          latitude: "139.7552727"
+          longitude: "35.6909238"
+          shop_name: "hoge"
+
+    Books:
+      description: 本
+      type: array
+      items:
+        $ref: '#/components/schemas/Book'
+      example:
+        - id: 1
+          title: "hoge"
+          author: "hoge"
+          event_name: "hoge"
+          thumbnail_url: "https://www.example.com"
+          latitude: "139.7552727"
+          longitude: "35.6909238"
+          shop_name: "hoge"
+        - id: 2
+          title: "fuga"
+          author: "fuga"
+          event_name: "fuga"
+          thumbnail_url: "https://www.example.com"
+          latitude: "139.7552727"
+          longitude: "35.6909238"
+          shop_name: "fuga"
+        - id: 3
+          title: "piyo"
+          author: "piyo"
+          event_name: "piyo"
+          thumbnail_url: "https://www.example.com"
+          latitude: "139.7552727"
+          longitude: "35.6909238"
+          shop_name: "hoge"
+
+  parameters:
+    BookIdParameter:
+      in: path
+      name: book_id
+      required: true
+      description: Book ID
+      schema:
+        $ref: '#/components/schemas/BookId'
