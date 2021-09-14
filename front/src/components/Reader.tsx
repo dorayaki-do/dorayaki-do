@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 import axios from "axios"
-
 import { API_ENDPOINT } from "../utils/apiEndPoint"
+import { BuyFooter } from "./BuyFooter"
 
 type ReaderProps = {
   id: string
@@ -19,23 +19,27 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
   }
 
   useEffect(() => {
-    axios.get(`${API_ENDPOINT}/books/${id}/epub`)
-    .then((res) => {
-      setEpubUrl(res.data.epub_url)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    axios
+      .get(`${API_ENDPOINT}/books/${id}/epub`)
+      .then((res) => {
+        setEpubUrl(res.data.epub_url)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
 
   return (
-    <Box h="95vh" position="relative">
-      <ReactReader
-        location={location}
-        locationChanged={locationChanged}
-        url={epubUrl}
-      />
-    </Box>
+    <>
+      <Box h="95vh" position="relative">
+        <ReactReader
+          location={location}
+          locationChanged={locationChanged}
+          url={epubUrl}
+        />
+      </Box>
+      <BuyFooter id={id} />
+    </>
   )
 }
 
