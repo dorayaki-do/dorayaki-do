@@ -31,7 +31,7 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
 
   return (
     <>
-      <Box h="95vh" position="relative">
+      <Box h="87vh" position="relative">
         <ReactReader
           location={location}
           locationChanged={locationChanged}
