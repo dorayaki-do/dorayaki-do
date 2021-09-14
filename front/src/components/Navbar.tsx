@@ -20,7 +20,7 @@ export const Navbar = () => {
   return (
     <>
       <Flex bgColor="#ffa000" minH="5vh" alignItems="center" px="15%">
-        <Link href="/" _hover={{ "text-decoration": "none" }}>
+        <Link href="/" _hover={{ textDecoration: "none" }}>
           <Text color="white" fontWeight="bold" fontSize="lg">
             DorayakiDo
           </Text>
