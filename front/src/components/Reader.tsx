@@ -1,5 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { ReactReader } from "react-reader"
+import axios from "axios"
+
+import { API_ENDPOINT } from "../utils/apiEndPoint"
 
 type ReaderProps = {
   id: string
@@ -8,16 +11,28 @@ type ReaderProps = {
 const Reader: React.FC<ReaderProps> = ({ id }) => {
   // And your own state logic to persist state
   const [location, setLocation] = useState(null)
+  const [epubUrl, setEpubUrl] = useState("")
   const locationChanged = (epubcifi) => {
     // epubcifi is a internal string used by epubjs to point to a location in an epub. It looks like this: epubcfi(/6/6[titlepage]!/4/2/12[pgepubid00003]/3:0)
     setLocation(epubcifi)
   }
+
+  useEffect(() => {
+    axios.get(`${API_ENDPOINT}/books/${id}/epub`)
+    .then((res) => {
+      setEpubUrl(res.data.epub_url)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }, [])
+
   return (
     <div style={{ height: "100vh" }}>
       <ReactReader
         location={location}
         locationChanged={locationChanged}
-        url={"/" + id + ".epub"}
+        url={epubUrl}
       />
     </div>
   )
