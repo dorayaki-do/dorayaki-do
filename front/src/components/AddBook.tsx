@@ -36,7 +36,7 @@ export const AddBook: VFC<Props> = memo((props) => {
         confMessage="この本を本棚に追加しますか？"
         yesButton="追加する"
         noButton="追加しない"
-        clickAddButton={handleClickAddBook}
+        yesButtonAction={handleClickAddBook}
       />
     </Center>
   )

@@ -1,10 +1,10 @@
-import { memo, VFC } from "react"
+import { memo, ReactNode, VFC } from "react"
 import { Button } from "@chakra-ui/react"
 
 type Props = {
   color: string
   backgroundColor: string
-  children: string
+  children: ReactNode
   type?: "button" | "submit" | "reset"
   border?: string
   size?: string

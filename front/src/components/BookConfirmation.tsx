@@ -1,4 +1,4 @@
-import { memo, VFC } from "react"
+import { memo, ReactNode, VFC } from "react"
 import { Box, Flex, Text } from "@chakra-ui/react"
 
 import { BasicButton } from "./BasicButton"
@@ -7,14 +7,22 @@ type Props = {
   bookId: string
   url: string
   confMessage: string
-  yesButton: string
-  noButton: string
-  clickAddButton?: () => void
+  yesButton: ReactNode
+  noButton: ReactNode
+  yesButtonAction?: () => void
+  noButtonAction?: () => void
 }
 
 export const BookConfirmation: VFC<Props> = memo((props) => {
-  const { bookId, url, confMessage, yesButton, noButton, clickAddButton } =
-    props
+  const {
+    bookId,
+    url,
+    confMessage,
+    yesButton,
+    noButton,
+    yesButtonAction,
+    noButtonAction,
+  } = props
 
   return (
     <Flex align="center" justify="center">
@@ -32,7 +40,7 @@ export const BookConfirmation: VFC<Props> = memo((props) => {
             color="#FFFFFF"
             backgroundColor="#FFA000"
             type="button"
-            onClick={clickAddButton}
+            onClick={yesButtonAction}
           >
             {yesButton}
           </BasicButton>
@@ -41,6 +49,7 @@ export const BookConfirmation: VFC<Props> = memo((props) => {
             backgroundColor="#FFFFFF"
             type="button"
             border="1px solid #333333"
+            onClick={noButtonAction}
           >
             {noButton}
           </BasicButton>

@@ -79,7 +79,7 @@ export const BuyFooter: React.FC<Props> = ({ id }) => {
           <ModalHeader>おすすめの作品</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <PurchaseBook id={id} />
+            <PurchaseBook id={id} closeAction={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>
