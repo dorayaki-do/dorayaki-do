@@ -14,7 +14,7 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
     setLocation(epubcifi)
   }
   return (
-    <Box h="90vh" position="relative">
+    <Box h="95vh" position="relative">
       <ReactReader
         location={location}
         locationChanged={locationChanged}

@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <Flex bgColor="#ffa000" minH={50} alignItems="center" px="15%">
+      <Flex bgColor="#ffa000" minH="5vh" alignItems="center" px="15%">
         <Text color="white" fontWeight="bold" fontSize="lg">
           DorayakiDo
         </Text>
@@ -40,6 +40,7 @@ export const Navbar = () => {
           focusable={true}
           color="white"
           onClick={onToggle}
+          size="sm"
         />
       </Flex>
       <Collapse in={isOpen} animateOpacity={false}>
