@@ -1,7 +1,7 @@
-import { memo, VFC } from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { memo, VFC } from "react"
+import { Box, Flex, Text } from "@chakra-ui/react"
 
-import { BasicButton } from "./BasicButton";
+import { BasicButton } from "../BasicButton"
 
 type Props = {
   bookId: string
@@ -13,7 +13,8 @@ type Props = {
 }
 
 export const BookConfirmation: VFC<Props> = memo((props) => {
-  const { bookId, url, confMessage, yesButton, noButton, clickAddButton } = props
+  const { bookId, url, confMessage, yesButton, noButton, clickAddButton } =
+    props
 
   return (
     <Flex align="center" justify="center" h="100vh">
@@ -22,12 +23,7 @@ export const BookConfirmation: VFC<Props> = memo((props) => {
           src={url}
           htmlWidth="180px"
         /> */}
-        <Box
-          w="180px"
-          h="288px"
-          bg="red.500"
-          mx="auto"
-        />
+        <Box w="180px" h="288px" bg="red.500" mx="auto" />
         <Box>
           <Text mt="4">{confMessage}</Text>
         </Box>

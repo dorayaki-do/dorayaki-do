@@ -1,4 +1,4 @@
-import { BookShelf } from "../../components/BookShelf"
+import { BookShelf } from "../../components/book/BookShelf"
 
 const App = () => {
   return <BookShelf />
