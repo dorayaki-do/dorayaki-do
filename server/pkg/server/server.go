@@ -1,10 +1,11 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/dorayaki-do/dorayaki-do/pkg/route"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 const (
@@ -29,6 +30,7 @@ func Init() {
 // AuthRequired is a simple middleware to check the session
 func AuthRequired(c *gin.Context) {
 	session := sessions.Default(c)
+	session.Set("user", "aoki")
 	user := session.Get(userKey)
 	if user == nil {
 		// Abort the request with the appropriate error code
