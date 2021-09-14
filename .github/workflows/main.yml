@@ -31,5 +31,5 @@ jobs:
       run: |
         IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
         cd server/
-        docker build -f build/app/Dockerfile -t "dorayaki:v1" .
-        docker push "dorayaki:v1"
+        docker build -f build/app/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
