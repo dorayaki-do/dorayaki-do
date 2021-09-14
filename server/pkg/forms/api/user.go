@@ -18,3 +18,9 @@ type UserPasswordHashed struct {
 	Password []byte `json:"password" binding:"required"`
 	Nickname string `json:"nickname" binding:"required"`
 }
+
+type UserHaveBook struct {
+	Title        string
+	Eventname    string
+	Thumbnailurl string
+}

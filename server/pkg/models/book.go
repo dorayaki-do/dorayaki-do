@@ -15,5 +15,4 @@ type Book struct {
 	Latitude     string `json:"latitude"`
 	Longitude    string `json:"longitude"`
 	Shopname     string `json:"shopname"`
-	Users        []User `gorm:"many2many:my_book" json:"user"`
 }
