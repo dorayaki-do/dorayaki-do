@@ -9,10 +9,10 @@ type Book struct {
 	gorm.Model
 	Title        string `json:"title" binding:"required"`
 	Author       string `json:"author" binding:"required"`
-	Eventname    string `json:"eventname" binding:"required"`
 	Epuburl      string `json:"epuburl" binding:"required"`
 	Thumbnailurl string `json:"thumbnail" binding:"required"`
 	Latitude     string `json:"latitude"`
 	Longitude    string `json:"longitude"`
 	Shopname     string `json:"shopname"`
+	Event        []Event
 }
