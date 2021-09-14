@@ -8,7 +8,7 @@ const Index = () => (
       <VStack>
         <Heading mt={50}>DorayakiDo</Heading>
         <Text mt={50}>旅して漫画を集めよう</Text>
-        <Link href="/sign_in">
+        <Link href="/sign_in" _hover={{ textDecoration: "none" }}>
           <BasicButton color="#ffffff" backgroundColor="#FFA000">
             ログイン
           </BasicButton>
