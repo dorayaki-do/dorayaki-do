@@ -9,10 +9,11 @@ type Props = {
   confMessage: string
   yesButton: string
   noButton: string
+  clickAddButton: () => void
 }
 
 export const BookConfirmation: VFC<Props> = memo((props) => {
-  const { bookId, url, confMessage, yesButton, noButton } = props
+  const { bookId, url, confMessage, yesButton, noButton, clickAddButton } = props
 
   return (
     <Flex align="center" justify="center" h="100vh">
@@ -35,6 +36,7 @@ export const BookConfirmation: VFC<Props> = memo((props) => {
             color="#FFFFFF"
             backgroundColor="#FFA000"
             type="button"
+            onClick={clickAddButton}
           >
             {yesButton}
           </BasicButton>

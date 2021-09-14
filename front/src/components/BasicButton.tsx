@@ -7,10 +7,11 @@ type Props = {
   children: string
   type?: "button" | "submit" | "reset"
   border?: string
+  onClick?: () => void
 }
 
 export const BasicButton: VFC<Props> = memo((props) => {
-  const { color, backgroundColor, children, type, border } = props;
+  const { color, backgroundColor, children, type, border, onClick } = props;
 
   return(
     <Button
@@ -23,6 +24,7 @@ export const BasicButton: VFC<Props> = memo((props) => {
       border={border}
       display="block"
       borderRadius="100px"
+      onClick={onClick}
       _active={{opacity: 0.8}}
     >
       {children}
