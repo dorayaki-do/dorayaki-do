@@ -1,9 +1,10 @@
 package models
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"time"
 )
 
 type Event struct {
@@ -14,4 +15,5 @@ type Event struct {
 	Longitude   string     `json:"longitude"`
 	StartAt     *time.Time `json:"start_at"`
 	EndAt       *time.Time `json:"end_at"`
+	Book        []Book
 }

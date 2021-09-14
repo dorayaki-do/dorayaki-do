@@ -14,5 +14,4 @@ type Book struct {
 	Latitude     string `json:"latitude"`
 	Longitude    string `json:"longitude"`
 	Shopname     string `json:"shopname"`
-	Event        []Event
 }
