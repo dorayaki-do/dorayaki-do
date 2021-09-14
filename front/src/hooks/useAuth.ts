@@ -13,10 +13,11 @@ type Props = {
 export const useAuth = () => {
   const auth = (props: Props) => {
     const { data, path } = props
+    const uri = path === "/sign_up" ? "signup" : "login"
 
-    axios.post(`${API_ENDPOINT}/${path}`, {...data})
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err.message))
+    axios.post(`${API_ENDPOINT}/${uri}`, {...data})
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
   }
 
   return {auth}
