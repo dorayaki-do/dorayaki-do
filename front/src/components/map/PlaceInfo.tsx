@@ -79,6 +79,9 @@ export function PlaceInfo() {
             lat: marker.location.lat,
             lng: marker.location.lng,
           }}
+          onClick={() => {
+            setSelected(marker)
+          }}
           onMouseOver={() => {
             setSelected(marker)
           }}
