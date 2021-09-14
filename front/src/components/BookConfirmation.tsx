@@ -9,7 +9,7 @@ type Props = {
   confMessage: string
   yesButton: string
   noButton: string
-  clickAddButton: () => void
+  clickAddButton?: () => void
 }
 
 export const BookConfirmation: VFC<Props> = memo((props) => {
