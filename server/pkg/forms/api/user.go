@@ -24,3 +24,8 @@ type UserHaveBook struct {
 	Eventname    string
 	Thumbnailurl string
 }
+
+type UserPartEvent struct {
+	Latitude  string
+	Longitude string
+}

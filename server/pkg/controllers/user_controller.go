@@ -133,11 +133,38 @@ func GetMyBooks(c *gin.Context) {
 	for _, content := range books {
 		text := &api.UserHaveBook{
 			Title:        content.Title,
-			Eventname:    content.Eventname,
+			// Eventname:    content.Eventname,
 			Thumbnailurl: content.Thumbnailurl,
 		}
 		res = append(res, *text)
 	}
 
+	c.JSON(http.StatusOK, res)
+}
+
+func GetEvents(c *gin.Context) {
+	session := sessions.Default(c)
+	session.Set("UserID", 1)
+	uid := session.Get("UserID")
+	if uid == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
+		return
+	}
+
+	user, err := repo.GetBooksByID(uid)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+	}
+
+	books := user.Books
+	var res []api.UserPartEvent
+
+	for _, content := range books {
+		text := &api.UserPartEvent{
+			Latitude: content.Latitude,
+			Longitude: content.Longitude,
+		}
+		res = append(res, *text)
+	}
 	c.JSON(http.StatusOK, res)
 }
