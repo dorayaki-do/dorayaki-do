@@ -17,7 +17,7 @@ export const BookConfirmation: VFC<Props> = memo((props) => {
     props
 
   return (
-    <Flex align="center" justify="center" h="100vh">
+    <Flex align="center" justify="center">
       <Box>
         {/* <Image
           src={url}
