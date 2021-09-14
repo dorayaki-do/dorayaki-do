@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from "react"
 import { GoogleMap, useLoadScript } from "@react-google-maps/api"
 import { Text } from "@chakra-ui/react"
 import { Libraries } from "@react-google-maps/api/dist/utils/make-load-script-url"
+import { PlaceInfo } from "./PlaceInfo"
 
 const libraries: Libraries = ["places"]
 
@@ -45,6 +46,8 @@ export function GoogleMapComponent() {
       }} /* デフォルトのセンター */
       options={options}
       onLoad={onMapLoad}
-    />
+    >
+      <PlaceInfo />
+    </GoogleMap>
   )
 }
