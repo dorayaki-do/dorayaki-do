@@ -6,8 +6,11 @@ import {
   Text
 } from "@chakra-ui/react"
 import { Form, Formik } from "formik"
+
 import { LabelInput } from "./LabelInput";
 import { BasicButton } from "../BasicButton";
+import { useRouter } from "next/router";
+import { useAuth } from "../../hooks/useAuth"
 
 type Props = {
   title: string
@@ -16,9 +19,17 @@ type Props = {
 export const Auth: VFC<Props> = memo((props) => {
   const { title } = props;
   const [error, setError] = useState("")
+  const path = useRouter()
+  const pathname = path.pathname
+  const { auth } = useAuth()
+  const router = useRouter()
+
   const passwordConValidation = (values) => {
     if (values.password !== values.passwordConf) {
       setError("パスワードとパスワード（確認用）が異なります")
+    } else {
+      const data = {email: values.email, password: values.password, nickname: values.name}
+      auth({data, path: pathname, router})
     }
   }
 
@@ -28,6 +39,9 @@ export const Auth: VFC<Props> = memo((props) => {
       onSubmit={(values) => {
         if (title === "新規登録") {
           passwordConValidation(values)
+        } else {
+          const data = {nickname: values.name, password: values.password}
+          auth({data, path: pathname, router})
         }
         console.log(values)
       }}
@@ -42,23 +56,23 @@ export const Auth: VFC<Props> = memo((props) => {
             <Center align="center" h="100vh">
               <Box w="335px">
                 <Heading as="h1" fontSize="md">{title}</Heading>
-                {title === "新規登録" && (
-                  <LabelInput
-                    name="name"
-                    value={values.name}
-                    onChange={handleChange}
-                  >
-                    ニックネーム
-                  </LabelInput>
-                )}
                 <LabelInput
-                  type="email"
-                  name="email"
-                  value={values.email}
+                  name="name"
+                  value={values.name}
                   onChange={handleChange}
                 >
-                  メールアドレス
+                  ニックネーム
                 </LabelInput>
+                {title === "新規登録" && (
+                  <LabelInput
+                    type="email"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                  >
+                    メールアドレス
+                  </LabelInput>
+                )}
                 <LabelInput
                   type="password"
                   name="password"
