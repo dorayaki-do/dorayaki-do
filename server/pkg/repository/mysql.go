@@ -21,6 +21,7 @@ func autoMigration(db *gorm.DB) {
 	db.AutoMigrate(&models.Event{})
 	db.AutoMigrate(&models.User{})
 	db.AutoMigrate(&models.Book{})
+	db.AutoMigrate(&models.Event{})
 }
 
 func Seed(db *gorm.DB) {
@@ -32,6 +33,8 @@ func Seed(db *gorm.DB) {
 		Epuburl:      "test1",
 		Thumbnailurl: "test1",
 		EventID:      1,
+		Latitude:    "35.69112748139285",
+		Longitude:   "139.75755883982063",
 	}
 
 	book2 := models.Book{
@@ -39,31 +42,54 @@ func Seed(db *gorm.DB) {
 		Author:       "テストユーザー2",
 		Epuburl:      "test2",
 		Thumbnailurl: "test2",
-		EventID:      1,
+		Latitude:     "0",
+		Longitude:    "0",
 	}
 
-	event := models.Event{
-		Title:     "祭り",
-		Latitude:  "20",
-		Longitude: "20",
-		Book:      []models.Book{book1, book2},
+	book3 := models.Book{
+		Title:        "テスト3",
+		Author:       "テストユーザー3",
+		Epuburl:      "test3",
+		Thumbnailurl: "test3",
+		Latitude:     "0",
+		Longitude:    "0",
 	}
 
 	user1 := models.User{
 		Email:    "test1@example.com",
 		Password: password,
 		Nickname: "aoki",
-		Books:    []models.Book{book1},
+		// Books:    []models.Book{book1, book2, book3},
 	}
 
 	user2 := models.User{
 		Email:    "test2@example.com",
 		Password: password,
 		Nickname: "hanako",
-		Books:    []models.Book{book1, book2},
+		// Books:    []models.Book{book1, book2},
 	}
 
-	db.Create(&event)
+	event1 := models.Event{
+		Title:       "testevent",
+		Description: "testdescription",
+		Latitude:    "35.69112748139285",
+		Longitude:   "139.75755883982063",
+		Book:        []models.Book{book1},
+	}
+
+	event2 := models.Event{
+		Title:       "testevent2",
+		Description: "testdescription2",
+		Latitude:    "0",
+		Longitude:   "0",
+		Book:        []models.Book{book2,book3},
+	}
+
+	db.Create(&event1)
+	db.Create(&event2)
+	// db.Create(&book1)
+	// db.Create(&book2)
+	// db.Create(&book3)
 	db.Create(&user1)
 	db.Create(&user2)
 }

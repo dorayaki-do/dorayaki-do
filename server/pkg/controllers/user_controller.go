@@ -10,6 +10,7 @@ import (
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/forms/api"
 	"github.com/dorayaki-do/dorayaki-do/pkg/models"
+	mymodels "github.com/dorayaki-do/dorayaki-do/pkg/models/repository"
 	repo "github.com/dorayaki-do/dorayaki-do/pkg/models/repository"
 	"github.com/gin-gonic/gin"
 )
@@ -133,10 +134,52 @@ func GetMyBooks(c *gin.Context) {
 		text := &api.UserHaveBook{
 			ID:           content.ID,
 			Title:        content.Title,
-			Thumbnailurl: content.Thumbnailurl,
 		}
 		res = append(res, *text)
 	}
 
 	c.JSON(http.StatusOK, res)
+}
+
+func GetEvents(c *gin.Context) {
+	session := sessions.Default(c)
+	nickname := session.Get("user")
+
+	user, err := repo.GetBooksByID(nickname)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		return
+	}
+
+	books := user.Books
+	var res []api.UserPartEvent
+
+	for _, content := range books {
+		event, err := mymodels.GetEventByLocation(content.Latitude, content.Longitude)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		}
+		text := &api.UserPartEvent{
+			ID: event.ID,
+			Title: event.Title,
+			Description: event.Description,
+			Latitude: content.Latitude,
+			Longitude: content.Longitude,
+			StartAt: event.StartAt,
+			EndAt: event.EndAt,
+		}
+		res = append(res, *text)
+	}
+
+	isExists := make(map[uint]bool)
+	uniqueRes := []api.UserPartEvent{}
+
+	for _, elem := range res {
+		if !isExists[elem.ID] {
+			isExists[elem.ID] = true
+			uniqueRes = append(uniqueRes, elem)
+		}
+	}
+
+	c.JSON(http.StatusOK, uniqueRes)
 }
