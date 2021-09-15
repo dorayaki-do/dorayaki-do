@@ -1,7 +1,11 @@
 import { Box, Input, Center, Heading, Stack } from "@chakra-ui/react"
 import { BookGrid } from "./BookGrid"
 
-export const BookShelf = () => {
+type BookShelf = {
+  eventId: string
+}
+
+export const BookShelf = ({ eventId }) => {
   return (
     <Box>
       <Center>
@@ -12,7 +16,7 @@ export const BookShelf = () => {
           <Center>
             <Input width="80%" placeholder="本や作者を検索" />
           </Center>
-          <BookGrid />
+          <BookGrid eventId={eventId} />
         </Stack>
       </Center>
     </Box>
