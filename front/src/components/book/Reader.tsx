@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 import axios from "axios"
+
 import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BuyFooter } from "../BuyFooter"
 
@@ -18,11 +19,21 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
     setLocation(epubcifi)
   }
 
+  const axiosBase = axios.create({
+    baseURL: 'http://localhost:8080',
+    headers: {
+      Origin: 'http://localhsot:3000'
+    }
+  })
+
   useEffect(() => {
-    axios
-      .get(`${API_ENDPOINT}/books/${id}/epub`)
+    axiosBase
+      .get(`/users/me/books/${id}/epub`)
       .then((res) => {
-        setEpubUrl(res.data.epub_url)
+        const replaceUrl = res.data.epub_url.replaceAll('\u0026', '&')
+        // console.log(res.data.epub_url)
+        // console.log(replaceUrl)
+        setEpubUrl(replaceUrl)
       })
       .catch((err) => {
         console.log(err)
