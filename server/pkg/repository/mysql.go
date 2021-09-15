@@ -33,6 +33,8 @@ func Seed(db *gorm.DB) {
 		Epuburl:      "test1",
 		Thumbnailurl: "test1",
 		EventID:      1,
+		Latitude:    "35.69112748139285",
+		Longitude:   "139.75755883982063",
 	}
 
 	book2 := models.Book{
@@ -85,9 +87,9 @@ func Seed(db *gorm.DB) {
 
 	db.Create(&event1)
 	db.Create(&event2)
-	db.Create(&book1)
-	db.Create(&book2)
-	db.Create(&book3)
+	// db.Create(&book1)
+	// db.Create(&book2)
+	// db.Create(&book3)
 	db.Create(&user1)
 	db.Create(&user2)
 }
@@ -106,8 +108,8 @@ func NewDBClient(user, password, host string, port int, dbName string) *gorm.DB 
 		panic(err)
 	}
 
-	// autoMigration(DB)
-	// Seed(DB)
+	autoMigration(DB)
+	Seed(DB)
 
 	return DB
 }

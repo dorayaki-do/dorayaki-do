@@ -145,16 +145,10 @@ func GetEvents(c *gin.Context) {
 	session := sessions.Default(c)
 	nickname := session.Get("user")
 
-	uid, err := mymodels.GetUserIDByNickname(nickname)
-
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
-		return
-	}
-
-	user, err := repo.GetBooksByID(uid)
+	user, err := repo.GetBooksByID(nickname)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		return
 	}
 
 	books := user.Books
