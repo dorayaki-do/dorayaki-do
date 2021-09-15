@@ -21,7 +21,7 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
 
   useEffect(() => {
     axios
-      .get(`/users/me/books/${id}/epub`)
+      .get(`${API_ENDPOINT}/users/me/books/${id}/epub`)
       .then((res) => {
         // const replaceUrl = res.data.epub_url.replaceAll('\u0026', '&')
         console.log(res.data.epub_url)
