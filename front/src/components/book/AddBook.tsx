@@ -28,6 +28,11 @@ export const AddBook: VFC<Props> = memo((props) => {
       })
   }
 
+  const handleClickNoAddBook = () => {
+    router.push("/")
+    showMessage({ title: "本棚への追加を中断しました", status: "warning" })
+  }
+
   return (
     <Center h="95vh">
       <BookConfirmation
@@ -37,6 +42,7 @@ export const AddBook: VFC<Props> = memo((props) => {
         yesButton="追加する"
         noButton="追加しない"
         yesButtonAction={handleClickAddBook}
+        noButtonAction={handleClickNoAddBook}
       />
     </Center>
   )
