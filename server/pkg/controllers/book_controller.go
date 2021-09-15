@@ -106,3 +106,19 @@ func GetBookByEvent(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, response)
 }
+func GetEvent(c *gin.Context) {
+	id := c.Param("id")
+	event, err := models.GetEventByID(id)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Record Not Found"})
+		return
+	}
+	response := &api.ResponseEvent{
+		ID:          event.ID,
+		Title:       event.Title,
+		Description: event.Description,
+		Latitude:    event.Latitude,
+		Longitude:   event.Longitude,
+	}
+	c.JSON(http.StatusOK, response)
+}
