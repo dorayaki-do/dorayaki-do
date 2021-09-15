@@ -1,0 +1,10 @@
+{
+  "app": "npx ts-node bin/deployments.ts",
+  "versionReporting": false,
+  "context": {
+    "project": "dorayaki",
+    "serviceName": "dorayaki_do",
+    "repository": "dorayaki-do",
+    "region": "ap-northeast-1"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dorayakifront-dev-210649-authRole",
+      "UnauthRoleArn": "arn:aws:iam::567648563513:role/amplify-dorayakifront-dev-210649-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::567648563513:role/amplify-dorayakifront-dev-210649-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-dorayakifront-dev-210649-deployment",
+      "UnauthRoleName": "amplify-dorayakifront-dev-210649-unauthRole",
+      "StackName": "amplify-dorayakifront-dev-210649",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:567648563513:stack/amplify-dorayakifront-dev-210649/40cd8650-1554-11ec-8318-06cc768bfc05",
+      "AmplifyAppId": "dc31h2npa7x7a"
+    },
+    "categories": {
+      "auth": {
+        "cognito5d38c089": {}
+      }
+    }
+  }
+}
