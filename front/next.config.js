@@ -1,6 +1,6 @@
-const isProd = process.env.NODE_ENV === "production";
+const isDev = process.env.NODE_ENV === "development";
 module.exports = {
   env: {
-    server: isProd ? "https://production-server.com" : "http://localhost:8080"
+    server: isDev ? "http://localhost:8080" : "https://production-server.com"
   },
 }
