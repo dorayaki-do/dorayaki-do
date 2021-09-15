@@ -1,18 +1,7 @@
 import { Link, Text, Center, VStack, Heading } from "@chakra-ui/react"
 import { Container } from "../components/Container"
 import { BasicButton } from "../components/BasicButton"
-import { UserContext } from "../../context/User"
-import { useContext } from "react"
-import { useRouter } from "next/router"
-
 const Index = () => {
-  const router = useRouter()
-  const { user } = useContext(UserContext)
-  if (user && user !== null) {
-    if (typeof window !== "undefined") {
-      router.push("/shelf")
-    }
-  }
   return (
     <Container height="95vh">
       <Center>

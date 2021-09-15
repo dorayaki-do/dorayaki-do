@@ -34,6 +34,7 @@ export const useAuth = () => {
       .post(`${API_ENDPOINT}/${uri}`, { ...data })
       .then(() => {
         const finalRedirectUrl = redirectUrl ? redirectUrl : "/shelf"
+        console.log(data.nickname)
         userLoggedIn(data.nickname)
         router.push(finalRedirectUrl)
         showMessage({ title: `${title}しました`, status: "success" })
