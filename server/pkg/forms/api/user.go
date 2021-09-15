@@ -20,7 +20,7 @@ type UserPasswordHashed struct {
 }
 
 type UserHaveBook struct {
+	ID           uint
 	Title        string
-	Eventname    string
 	Thumbnailurl string
 }

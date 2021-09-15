@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/gin-gonic/contrib/cors"
+	"github.com/gin-contrib/cors"
 	"net/http"
 	"time"
 
@@ -21,8 +21,8 @@ func Init() {
 	store := sessions.NewCookieStore([]byte("secret"))
 	corsConfig := cors.Config{
 		AllowAllOrigins:  true,
-		AllowedMethods:   []string{"GET", "POST", "DELETE", "PATCH", "PUT"},
-		AllowedHeaders:   []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+		AllowMethods:     []string{"GET", "POST", "DELETE", "PATCH", "PUT"},
+		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
 		AllowCredentials: false,
 		MaxAge:           12 * time.Hour,
 	}
