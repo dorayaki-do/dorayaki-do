@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useRouter } from "next/router"
 import { memo, VFC } from "react"
-import { useMessage } from "../hooks/useMessage"
-import { API_ENDPOINT } from "../utils/apiEndPoint"
+import { useMessage } from "../../hooks/useMessage"
+import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BookConfirmation } from "./BookConfirmation"
 import { Center } from "@chakra-ui/react"
 

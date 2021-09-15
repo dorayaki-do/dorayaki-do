@@ -16,7 +16,7 @@ import (
 
 func GetBook(c *gin.Context) {
 	id := c.Param("id")
-	book, err := models.GetBookByID(id)
+	book, err := models.GetBookByBookID(id)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Record Not Found"})
 		return
@@ -59,4 +59,50 @@ func GetEpubUrl(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"epub_url": urlStr})
+}
+
+func GetBookByEvent(c *gin.Context) {
+	bookID := c.Param("id")
+	userSess := sessions.Default(c)
+	nickname := userSess.Get("user")
+
+	if nickname == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
+		return
+	}
+
+	books, err := models.GetBookByEventID(bookID)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Record Not Found"})
+		return
+	}
+
+	var response []api.ResponseBook
+
+	for _, content := range books {
+		book, err := models.GetBookByUserID(nickname, content.ID)
+		if err == nil {
+			if book.Title == "" {
+				text := &api.ResponseBook{
+					ID:           content.ID,
+					Title:        content.Title,
+					Thumbnailurl: content.Thumbnailurl,
+					CanAccess:    false,
+				}
+				response = append(response, *text)
+			} else {
+				text := &api.ResponseBook{
+					ID:           content.ID,
+					Title:        content.Title,
+					Thumbnailurl: content.Thumbnailurl,
+					CanAccess:    true,
+				}
+				response = append(response, *text)
+			}
+		} else {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record Not Found"})
+			return
+		}
+	}
+	c.JSON(http.StatusOK, response)
 }
