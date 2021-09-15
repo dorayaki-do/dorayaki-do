@@ -115,14 +115,13 @@ func Logout(c *gin.Context) {
 // セッションがうまく動作していない...
 func GetMyBooks(c *gin.Context) {
 	session := sessions.Default(c)
-	session.Set("UserID", 1)
-	uid := session.Get("UserID")
-	if uid == nil {
+	nickname := session.Get(userKey)
+	if nickname == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
 		return
 	}
 
-	user, err := repo.GetBooksByID(uid)
+	user, err := repo.GetBooksByID(nickname)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 	}
@@ -132,6 +131,7 @@ func GetMyBooks(c *gin.Context) {
 
 	for _, content := range books {
 		text := &api.UserHaveBook{
+			ID:           content.ID,
 			Title:        content.Title,
 			Thumbnailurl: content.Thumbnailurl,
 		}

@@ -22,6 +22,7 @@ func GetBook(c *gin.Context) {
 		return
 	}
 	response := &api.ResponseBook{
+		ID:           book.ID,
 		Title:        book.Title,
 		Thumbnailurl: book.Thumbnailurl,
 	}
