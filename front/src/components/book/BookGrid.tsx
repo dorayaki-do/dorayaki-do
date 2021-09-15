@@ -4,19 +4,36 @@ import { useEffect, useState } from "react"
 import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BookItem } from "./BookItem"
 
-export const BookGrid = () => {
+type BookGridProps = {
+  eventId: string
+}
+
+export const BookGrid: React.FC<BookGridProps> = ({ eventId }) => {
   const [bookData, setBookData] = useState([])
 
   useEffect(() => {
-    axios
-      .get(`${API_ENDPOINT}/books`)
-      .then((res) => {
-        setBookData(res.data.books)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+    if (eventId != null) {
+      axios
+        .get(`${API_ENDPOINT}/users/me/event/${eventId}/books`)
+        .then((res) => {
+          console.log(res)
+          setBookData(res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    } else {
+      axios
+        .get(`${API_ENDPOINT}/users/me/books`)
+        .then((res) => {
+          console.log(res)
+          setBookData(res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }, [eventId])
 
   return (
     <Grid
@@ -29,9 +46,10 @@ export const BookGrid = () => {
         <>
           {bookData.map((data) => (
             <BookItem
-              bookId={data.id}
+              bookId={data.ID}
               title={data.Title}
-              imageUrl={data.test1}
+              imageUrl={data.Thumbnailurl}
+              canAccess={data.CanAccess}
             />
           ))}
         </>

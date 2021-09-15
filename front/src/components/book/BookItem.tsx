@@ -15,11 +15,13 @@ type BookItemProps = {
   imageUrl: string
   title: string
   bookId: string
+  canAccess: boolean
 }
 export const BookItem: React.FC<BookItemProps> = ({
   imageUrl,
   title,
   bookId,
+  canAccess,
 }) => {
   const [isFav, setIsFav] = useState<boolean>(false)
 
@@ -41,9 +43,13 @@ export const BookItem: React.FC<BookItemProps> = ({
           </Box>
         </Container>
         <Center>
-          <LinkOverlay href={`/read/${bookId}`}>
+          {canAccess ? (
+            <LinkOverlay href={`/read/${bookId}`}>
+              <Text textDecoration="none">{title}</Text>
+            </LinkOverlay>
+          ) : (
             <Text textDecoration="none">{title}</Text>
-          </LinkOverlay>
+          )}
         </Center>
       </LinkBox>
     </Stack>

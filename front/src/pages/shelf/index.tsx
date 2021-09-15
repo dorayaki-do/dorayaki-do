@@ -1,7 +1,11 @@
+import { useRouter } from "next/router"
 import { BookShelf } from "../../components/book/BookShelf"
+import { getAsStringFromArray } from "../../utils/getAsStringFromArray"
 
 const App = () => {
-  return <BookShelf />
+  const router = useRouter()
+  const eventId = getAsStringFromArray(router.query.event)
+  return <BookShelf eventId={eventId} />
 }
 
 export default App
