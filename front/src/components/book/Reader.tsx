@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 import axios from "axios"
-import { API_ENDPOINT } from "../utils/apiEndPoint"
+import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BuyFooter } from "./BuyFooter"
 
 type ReaderProps = {
