@@ -12,3 +12,11 @@ type ResponseBook struct {
 	Thumbnailurl string
 	CanAccess    bool
 }
+
+type ResponseEvent struct {
+	ID          uint
+	Title       string
+	Description string
+	Latitude    string
+	Longitude   string
+}

@@ -49,3 +49,12 @@ func GetBookByUserID(nickname interface{}, bookId uint) (models.ReturnBook, erro
 	}
 	return b, nil
 }
+
+func GetEventByID(eventId string) (models.Event, error) {
+	var e models.Event
+	if err := repository.DB.Model(&models.Event{}).
+		Where("id = ?", eventId).Find(&e).Error; err != nil {
+		return e, err
+	}
+	return e, nil
+}
