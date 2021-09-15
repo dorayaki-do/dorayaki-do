@@ -36,6 +36,7 @@ func RegisterMyBook(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to add book by bookID"})
+		return
 	}
 	
 	err = models.PrepareMyBook(userID, json.BookID)
