@@ -11,7 +11,7 @@ export const BookGrid = () => {
     axios
       .get(`${API_ENDPOINT}/users/me/books`)
       .then((res) => {
-        setBookData(res.data.books)
+        setBookData(res.data)
       })
       .catch((err) => {
         console.log(err)
