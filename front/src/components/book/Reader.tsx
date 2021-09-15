@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 import axios from "axios"
+
 import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BuyFooter } from "../BuyFooter"
 
@@ -20,9 +21,14 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
 
   useEffect(() => {
     axios
-      .get(`${API_ENDPOINT}/books/${id}/epub`)
+      .get(`${API_ENDPOINT}/users/me/books/${id}/epub`)
       .then((res) => {
-        setEpubUrl(res.data.epub_url)
+        // const replaceUrl = res.data.epub_url.replaceAll('\u0026', '&')
+        console.log(res.data.epub_url)
+        // console.log(replaceUrl)
+        // setEpubUrl(replaceUrl)
+        const url = "https://dorayaki-do-epub.s3.ap-northeast-1.amazonaws.com/techdo-book-3.epub"
+        setEpubUrl(url)
       })
       .catch((err) => {
         console.log(err)
