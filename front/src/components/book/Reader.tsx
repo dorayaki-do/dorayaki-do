@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/layout"
 import { ReactReader } from "react-reader"
 import axios from "axios"
 import { API_ENDPOINT } from "../../utils/apiEndPoint"
-import { BuyFooter } from "./BuyFooter"
+import { BuyFooter } from "../BuyFooter"
 
 type ReaderProps = {
   id: string
