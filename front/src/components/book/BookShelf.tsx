@@ -1,6 +1,8 @@
 import { Box, Input, Center, Heading, Stack, Text } from "@chakra-ui/react"
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import { useContext, useEffect, useState } from "react"
+import { UserContext } from "../../../context/User"
 import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BookGrid } from "./BookGrid"
 

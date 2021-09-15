@@ -10,10 +10,11 @@ import { useMessage } from "../../hooks/useMessage"
 
 type Props = {
   title: string
+  redirectUrl?: string
 }
 
 export const Auth: VFC<Props> = memo((props) => {
-  const { title } = props
+  const { title, redirectUrl } = props
   const [error, setError] = useState("")
   const path = useRouter()
   const pathname = path.pathname
@@ -30,7 +31,7 @@ export const Auth: VFC<Props> = memo((props) => {
         password: values.password,
         nickname: values.name,
       }
-      auth({ data, path: pathname, router, showMessage })
+      auth({ data, path: pathname, router, showMessage, redirectUrl })
     }
   }
 
@@ -42,7 +43,7 @@ export const Auth: VFC<Props> = memo((props) => {
           passwordConValidation(values)
         } else {
           const data = { nickname: values.name, password: values.password }
-          auth({ data, path: pathname, router, showMessage })
+          auth({ data, path: pathname, router, showMessage, redirectUrl })
         }
         console.log(values)
       }}
