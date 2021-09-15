@@ -125,6 +125,7 @@ func GetMyBooks(c *gin.Context) {
 	user, err := repo.GetBooksByID(nickname)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		return
 	}
 
 	books := user.Books
@@ -158,6 +159,7 @@ func GetEvents(c *gin.Context) {
 		event, err := mymodels.GetEventByLocation(content.Latitude, content.Longitude)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+			return
 		}
 		text := &api.UserPartEvent{
 			ID: event.ID,
