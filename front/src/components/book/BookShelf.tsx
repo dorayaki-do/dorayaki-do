@@ -1,4 +1,7 @@
-import { Box, Input, Center, Heading, Stack } from "@chakra-ui/react"
+import { Box, Input, Center, Heading, Stack, Text } from "@chakra-ui/react"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { API_ENDPOINT } from "../../utils/apiEndPoint"
 import { BookGrid } from "./BookGrid"
 
 type BookShelf = {
@@ -6,6 +9,23 @@ type BookShelf = {
 }
 
 export const BookShelf = ({ eventId }) => {
+  const [eventName, setEventName] = useState<string>("")
+  const [eventDetail, setEventDetail] = useState<string>("")
+
+  useEffect(() => {
+    if (eventId != null) {
+      axios
+        .get(`${API_ENDPOINT}/users/me/event/${eventId}/`)
+        .then((res) => {
+          setEventName(res.data.Title)
+          setEventDetail(res.data.Description)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }, [eventId, eventName])
+
   return (
     <Box>
       <Center>
@@ -16,6 +36,16 @@ export const BookShelf = ({ eventId }) => {
           <Center>
             <Input width="80%" placeholder="本や作者を検索" />
           </Center>
+          {eventId != null && (
+            <Box>
+              <Center>
+                <Heading as="h3" fontSize="md">
+                  {eventName}
+                </Heading>
+              </Center>
+              <Center>{eventDetail}</Center>
+            </Box>
+          )}
           <BookGrid eventId={eventId} />
         </Stack>
       </Center>
