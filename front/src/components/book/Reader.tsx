@@ -27,12 +27,12 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
         console.log(res.data.epub_url)
         // console.log(replaceUrl)
         // setEpubUrl(replaceUrl)
-        const url = "https://dorayaki-do-epub.s3.ap-northeast-1.amazonaws.com/techdo-book-3.epub"
-        setEpubUrl(url)
       })
       .catch((err) => {
         console.log(err)
       })
+    const url = "https://dorayaki-do-epub.s3.ap-northeast-1.amazonaws.com/techdo-book-3.epub"
+    setEpubUrl(url)
   }, [])
 
   return (
