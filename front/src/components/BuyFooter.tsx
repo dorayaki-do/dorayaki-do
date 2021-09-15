@@ -11,7 +11,7 @@ import {
 import Image from "next/image"
 import React from "react"
 import { BasicButton } from "./BasicButton"
-import { PurchaseBook } from "./CominaviBook"
+import { PurchaseBook } from "./book/CominaviBook"
 
 type Props = {
   id: string
