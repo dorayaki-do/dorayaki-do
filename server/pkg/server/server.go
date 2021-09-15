@@ -1,9 +1,10 @@
 package server
 
 import (
-	"github.com/gin-contrib/cors"
 	"net/http"
 	"time"
+
+	"github.com/gin-contrib/cors"
 
 	"github.com/dorayaki-do/dorayaki-do/pkg/route"
 	"github.com/gin-gonic/contrib/sessions"
@@ -35,7 +36,7 @@ func Init() {
 	auth := r.Group("", AuthRequired)
 	route.SetUpAuthRouter(auth)
 
-	r.Run(":8080")
+	r.Run(":80")
 }
 
 // AuthRequired is a simple middleware to check the session
