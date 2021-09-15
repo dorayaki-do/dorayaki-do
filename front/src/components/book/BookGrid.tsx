@@ -9,7 +9,7 @@ export const BookGrid = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_ENDPOINT}/books`)
+      .get(`${API_ENDPOINT}/users/me/books`)
       .then((res) => {
         setBookData(res.data.books)
       })
