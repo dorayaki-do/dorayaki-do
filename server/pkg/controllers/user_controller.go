@@ -157,7 +157,9 @@ func GetEvents(c *gin.Context) {
 	for _, content := range books {
 		event, err := mymodels.GetEventByLocation(content.Latitude, content.Longitude)
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+			continue
+			// c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+			// return
 		}
 		text := &api.UserPartEvent{
 			ID: event.ID,
