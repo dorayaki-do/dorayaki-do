@@ -1,12 +1,13 @@
 import { Box, Link, Heading, Text } from "@chakra-ui/react"
 
 export type Event = {
-  title: string
-  id: string
-  info: string
-  startDate: Date
-  endDate: Date
-  location: { lat: number; lng: number }
+  Title: string
+  ID: string
+  Description: string
+  StartAt: Date
+  EndAt: Date
+  Latitude: number
+  Longitude: number
 }
 type EventProps = {
   event: Event
@@ -22,15 +23,17 @@ export const MapInfo: React.FC<EventProps> = ({ event }) => {
         fontWeight="semibold"
         lineHeight="tight"
       >
-        {event.title}
+        {event.Title}
       </Heading>
-      <Box mb="1">{event.info}</Box>
-      <Text mb="1">
-        {event.startDate.toLocaleDateString()}~
-        {event.endDate.toLocaleDateString()}
-      </Text>
+      <Box mb="1">{event.Description}</Box>
+      {event.StartAt && event.EndAt && (
+        <Text mb="1">
+          {event.StartAt.toLocaleDateString()}~
+          {event.EndAt.toLocaleDateString()}
+        </Text>
+      )}
       <Text textAlign="right" color="#ffa000">
-        <Link href={`/shelf?event=${event.id}`}>漫画を見る→</Link>
+        <Link href={`/shelf?event=${event.ID}`}>漫画を見る→</Link>
       </Text>
     </Box>
   )
