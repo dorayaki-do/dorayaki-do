@@ -14,4 +14,9 @@ type Book struct {
 	Latitude     string `json:"latitude"`
 	Longitude    string `json:"longitude"`
 	Shopname     string `json:"shopname"`
+	EventID      uint   `json:"event_id"`
+}
+
+type ReturnBook struct {
+	Title string
 }

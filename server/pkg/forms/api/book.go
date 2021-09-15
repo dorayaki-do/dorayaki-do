@@ -7,6 +7,8 @@ type Book struct {
 }
 
 type ResponseBook struct {
+	ID           uint
 	Title        string
 	Thumbnailurl string
+	CanAccess    bool
 }

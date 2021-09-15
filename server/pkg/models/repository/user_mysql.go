@@ -25,10 +25,10 @@ func CreateUser(user api.UserPasswordHashed) error {
 	return err
 }
 
-func GetBooksByID(id interface{}) (models.User, error) {
+func GetBooksByID(nickname interface{}) (models.User, error) {
 	var user models.User
 
-	err := repository.DB.First(&user, id).Related(&user.Books, "Books").Error
+	err := repository.DB.Find(&user, "nickname = ?", nickname).Related(&user.Books, "Books").Error
 	if err != nil {
 		return user, err
 	}
