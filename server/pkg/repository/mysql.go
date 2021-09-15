@@ -108,8 +108,8 @@ func NewDBClient(user, password, host string, port int, dbName string) *gorm.DB 
 		panic(err)
 	}
 
-	autoMigration(DB)
-	Seed(DB)
+	// autoMigration(DB)
+	// Seed(DB)
 
 	return DB
 }
