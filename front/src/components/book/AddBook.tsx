@@ -18,7 +18,7 @@ export const AddBook: VFC<Props> = memo((props) => {
 
   const handleClickAddBook = () => {
     axios
-      .post(`${API_ENDPOINT}/books`, { id })
+      .post(`${API_ENDPOINT}/users/me/books`, { id })
       .then(() => {
         router.push("/shelf")
         showMessage({ title: "本棚に追加しました", status: "success" })

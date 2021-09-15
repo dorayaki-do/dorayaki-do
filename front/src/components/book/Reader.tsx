@@ -20,7 +20,7 @@ const Reader: React.FC<ReaderProps> = ({ id }) => {
 
   useEffect(() => {
     axios
-      .get(`${API_ENDPOINT}/books/${id}/epub`)
+      .get(`${API_ENDPOINT}/users/me/books/${id}/epub`)
       .then((res) => {
         setEpubUrl(res.data.epub_url)
       })
