@@ -18,13 +18,14 @@ type Props = {
   path: string
   router: NextRouter
   showMessage: (props: Message) => void
+  redirectUrl?: string
 }
 
 export const useAuth = () => {
   const { user, userLoggedIn, userLoggedOut } = useContext(UserContext)
 
   const auth = (props: Props) => {
-    const { data, path, router, showMessage } = props
+    const { data, path, router, showMessage, redirectUrl } = props
     const uri = path === "/sign_up" ? "signup" : "login"
     const title = path === "/sign_up" ? "新規登録" : "ログイン"
     const id = 1
@@ -32,8 +33,9 @@ export const useAuth = () => {
     axios
       .post(`${API_ENDPOINT}/${uri}`, { ...data })
       .then(() => {
+        const finalRedirectUrl = redirectUrl ? redirectUrl : "/shelf"
         userLoggedIn(data.nickname)
-        router.push(`/book/${id}`)
+        router.push(finalRedirectUrl)
         showMessage({ title: `${title}しました`, status: "success" })
       })
       .catch((e) => {
