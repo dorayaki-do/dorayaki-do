@@ -16,7 +16,6 @@ export const BookGrid: React.FC<BookGridProps> = ({ eventId }) => {
       axios
         .get(`${API_ENDPOINT}/users/me/event/${eventId}/books`)
         .then((res) => {
-          console.log(res)
           setBookData(res.data)
         })
         .catch((err) => {
@@ -26,7 +25,6 @@ export const BookGrid: React.FC<BookGridProps> = ({ eventId }) => {
       axios
         .get(`${API_ENDPOINT}/users/me/books`)
         .then((res) => {
-          console.log(res)
           setBookData(res.data)
         })
         .catch((err) => {
@@ -42,7 +40,7 @@ export const BookGrid: React.FC<BookGridProps> = ({ eventId }) => {
       gap={6}
       mx="auto"
     >
-      {bookData.length ? (
+      {bookData && bookData.length ? (
         <>
           {bookData.map((data) => (
             <BookItem
@@ -54,7 +52,7 @@ export const BookGrid: React.FC<BookGridProps> = ({ eventId }) => {
           ))}
         </>
       ) : (
-        <Text>本棚に本がありません</Text>
+        <Text>本がありません</Text>
       )}
     </Grid>
   )

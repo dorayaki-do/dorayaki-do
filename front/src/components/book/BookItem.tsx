@@ -25,6 +25,8 @@ export const BookItem: React.FC<BookItemProps> = ({
 }) => {
   const [isFav, setIsFav] = useState<boolean>(false)
 
+  const cannotAccess = canAccess != null && !canAccess
+
   const onClickFav = () => {
     setIsFav((prev) => !prev)
   }
@@ -33,7 +35,7 @@ export const BookItem: React.FC<BookItemProps> = ({
     <Stack>
       <LinkBox>
         <Container p="0" position="relative" maxW="100%" height="auto">
-          {canAccess && imageUrl != "" ? (
+          {!cannotAccess && imageUrl != "" ? (
             <>
               <Image src={imageUrl} alt={title} width={150} height={240} />
               <Box position="absolute" zIndex="1" top={0} right={2}>
@@ -45,7 +47,7 @@ export const BookItem: React.FC<BookItemProps> = ({
           )}
         </Container>
         <Center>
-          {canAccess ? (
+          {!cannotAccess ? (
             <LinkOverlay href={`/read/${bookId}`}>
               <Text textDecoration="none">{title}</Text>
             </LinkOverlay>
