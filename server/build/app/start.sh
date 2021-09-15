@@ -5,4 +5,5 @@ until mysqladmin ping -h db --silent; do
 	sleep 1
 done
 
-air
+# air
+go run pkg/main.go

@@ -116,14 +116,13 @@ func Logout(c *gin.Context) {
 // セッションがうまく動作していない...
 func GetMyBooks(c *gin.Context) {
 	session := sessions.Default(c)
-	session.Set("UserID", 1)
-	uid := session.Get("UserID")
-	if uid == nil {
+	nickname := session.Get(userKey)
+	if nickname == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
 		return
 	}
 
-	user, err := repo.GetBooksByID(uid)
+	user, err := repo.GetBooksByID(nickname)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 	}
@@ -133,6 +132,7 @@ func GetMyBooks(c *gin.Context) {
 
 	for _, content := range books {
 		text := &api.UserHaveBook{
+			ID:           content.ID,
 			Title:        content.Title,
 		}
 		res = append(res, *text)
@@ -161,11 +161,31 @@ func GetEvents(c *gin.Context) {
 	var res []api.UserPartEvent
 
 	for _, content := range books {
+		event, err := mymodels.GetEventByLocation(content.Latitude, content.Longitude)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		}
 		text := &api.UserPartEvent{
+			ID: event.ID,
+			Title: event.Title,
+			Description: event.Description,
 			Latitude: content.Latitude,
 			Longitude: content.Longitude,
+			StartAt: event.StartAt,
+			EndAt: event.EndAt,
 		}
 		res = append(res, *text)
 	}
-	c.JSON(http.StatusOK, res)
+
+	isExists := make(map[uint]bool)
+	uniqueRes := []api.UserPartEvent{}
+
+	for _, elem := range res {
+		if !isExists[elem.ID] {
+			isExists[elem.ID] = true
+			uniqueRes = append(uniqueRes, elem)
+		}
+	}
+
+	c.JSON(http.StatusOK, uniqueRes)
 }
