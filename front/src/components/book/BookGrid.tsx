@@ -29,9 +29,9 @@ export const BookGrid = () => {
         <>
           {bookData.map((data) => (
             <BookItem
-              bookId={data.id}
+              bookId={data.ID}
               title={data.Title}
-              imageUrl={data.test1}
+              imageUrl={data.Thumbnailurl}
             />
           ))}
         </>
