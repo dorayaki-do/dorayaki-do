@@ -30,7 +30,7 @@ export const MapInfo: React.FC<EventProps> = ({ event }) => {
         {event.endDate.toLocaleDateString()}
       </Text>
       <Text textAlign="right" color="#ffa000">
-        <Link href="/shelf">漫画を見る→</Link>
+        <Link href={`/shelf?event=${event.id}`}>漫画を見る→</Link>
       </Text>
     </Box>
   )
