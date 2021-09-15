@@ -31,5 +31,5 @@ jobs:
       run: |
         IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
         cd server/
-        docker build -f build/app/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        docker build -f build/app/Dockerfile -t public.ecr.aws/o3g3b4f1/dorayaki-do:latest .
+        docker push public.ecr.aws/o3g3b4f1/dorayaki-do:latest
